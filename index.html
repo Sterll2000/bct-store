@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCT Store | Lords Mobile Resources</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Авторизация -->
+    <div id="auth-screen" class="auth-wrapper">
+        <div class="auth-box">
+            <div class="auth-logo">BCT Store 🏖</div>
+            <p class="auth-subtitle">Премиум ресурсы для Lords Mobile</p>
+
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="client">Игрок</button>
+                <button class="tab-btn" data-tab="staff">Сотрудник</button>
+            </div>
+
+            <form id="client-form" class="auth-form active">
+                <div class="form-group">
+                    <label>Никнейм в игре</label>
+                    <input type="text" id="client-nick" required placeholder="Например: DragonKing" autocomplete="off">
+                </div>
+                <button type="submit" class="btn-primary">Войти в магазин</button>
+                <p class="auth-help">Регистрация не требуется • Мгновенный доступ</p>
+            </form>
+
+            <form id="staff-form" class="auth-form">
+                <div class="form-group">
+                    <label>Логин</label>
+                    <input type="text" id="staff-login" required placeholder="admin" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Пароль</label>
+                    <input type="password" id="staff-pass" required placeholder="admin" autocomplete="off">
+                </div>
+                <button type="submit" class="btn-primary">Войти в панель</button>
+                <p class="auth-help">По умолчанию: <strong>admin / admin</strong></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Приложение -->
+    <div id="main-app" class="hidden">
+
+        <header class="app-header">
+            <div class="header-left">
+                <div class="app-logo">BCT Store</div>
+                <nav class="main-nav">
+                    <a class="nav-link active" data-section="home">Главная</a>
+                    <a class="nav-link" data-section="shop">Магазин</a>
+                    <a class="nav-link" data-section="orders">Заказы</a>
+                    <a class="nav-link" data-section="reviews">Отзывы</a>
+                    <a class="nav-link" data-section="chat">Поддержка</a>
+                    <!-- ИСПРАВЛЕНО: видная кнопка админки -->
+                    <a class="nav-link admin-only hidden" data-section="admin"
+                        style="background:rgba(99, 102, 241, 0.2);color:var(--primary);font-weight:700">⚙️
+                        Админ-панель</a>
+                </nav>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span class="user-name" id="user-name"></span>
+                    <span class="user-role" id="user-role"></span>
+                </div>
+                <button class="btn-cart" id="cart-btn">
+                    🛒
+                    <span class="cart-badge" id="cart-count">0</span>
+                </button>
+                <button class="btn-logout" id="logout-btn" title="Выйти">🚪</button>
+            </div>
+        </header>
+
+        <main class="app-content">
+
+            <!-- ГЛАВНАЯ -->
+            <section id="home" class="section active">
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1>Прокачай свой замок <span class="highlight">быстрее всех</span></h1>
+                        <p class="hero-desc">Официальный магазин BCT Store. Самоцветы, ресурсы и билеты на охоту с
+                            гарантированной доставкой за 5-15 минут.</p>
+                        <div class="hero-actions">
+                            <button class="btn-primary btn-to-shop" style="width:auto">Перейти в каталог →</button>
+                            <button class="btn-secondary btn-to-chat" style="width:auto">Связаться с поддержкой</button>
+                        </div>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <span class="stat-value">5K+</span>
+                            <span class="stat-label">Выполненных заказов</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-value">99.8%</span>
+                            <span class="stat-label">Довольных клиентов</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-value">24/7</span>
+                            <span class="stat-label">Поддержка онлайн</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-value">5 мин</span>
+                            <span class="stat-label">Среднее время доставки</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="info-card">
+                        <div class="card-header">📞 Официальные контакты BCT</div>
+                        <div class="card-body">
+                            <p style="margin-bottom:16px;color:var(--text-secondary)">С уважением, команда BCT 🏖🏖</p>
+                            <div class="contact-links">
+                                <a href="https://t.me/UnHoOlyStore" target="_blank" class="contact-link">
+                                    <span>✈️</span> t.me/UnHoOlyStore
+                                </a>
+                                <a href="https://t.me/oldcatmarket" target="_blank" class="contact-link">
+                                    <span>✈️</span> t.me/oldcatmarket
+                                </a>
+                                <a href="https://t.me/PackBus" target="_blank" class="contact-link">
+                                    <span>✈️</span> t.me/PackBus
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-header">🚀 Почему выбирают нас</div>
+                        <div class="card-body">
+                            <ul class="features-list">
+                                <li>Мгновенная обработка заказов после оплаты</li>
+                                <li>Полная безопасность — не требуем пароль от аккаунта</li>
+                                <li>Живая поддержка 24/7 в онлайн-чате</li>
+                                <li>Гарантия доставки или возврат средств</li>
+                                <li>Более 5000 успешных транзакций</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reviews-section">
+                    <div class="section-header">
+                        <h2>⭐ Последние отзывы</h2>
+                        <a class="nav-link" data-section="reviews" style="cursor:pointer">Все отзывы →</a>
+                    </div>
+                    <div class="reviews-grid" id="latest-reviews"></div>
+                </div>
+            </section>
+
+            <!-- МАГАЗИН -->
+            <section id="shop" class="section">
+                <div class="section-header">
+                    <h2>🛒 Каталог товаров</h2>
+                    <div class="hunt-banner">
+                        <div class="hunt-icon">⚔️</div>
+                        <div class="hunt-info">
+                            <p>🎯 <strong>Цель:</strong> <span id="display-hunt-mob"
+                                    style="color:var(--accent)">Загрузка...</span></p>
+                            <p>🏰 <strong>Гильдия:</strong> <span id="display-hunt-guild"
+                                    style="color:var(--accent)">Загрузка...</span></p>
+                            <p>⏰ <strong>Сбор:</strong> <span id="display-hunt-time"
+                                    style="color:var(--accent)">Загрузка...</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="products-grid" id="products-grid"></div>
+            </section>
+
+            <!-- ЗАКАЗЫ КЛИЕНТА -->
+            <section id="orders" class="section">
+                <div class="section-header">
+                    <h2>📜 История заказов</h2>
+                </div>
+                <div class="orders-container">
+                    <div id="client-orders" class="orders-list"></div>
+                    <div id="no-orders" class="empty-state hidden">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
+                        </svg>
+                        <p>У вас пока нет заказов</p>
+                        <button class="btn-secondary btn-to-shop-2" style="width:auto;display:inline-block">Перейти к
+                            покупкам</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ОТЗЫВЫ -->
+            <section id="reviews" class="section">
+                <div class="section-header">
+                    <h2>⭐ Все отзывы клиентов</h2>
+                </div>
+                <div class="reviews-grid" id="all-reviews"></div>
+            </section>
+
+            <!-- ПОДДЕРЖКА -->
+            <section id="chat" class="section">
+                <div class="section-header">
+                    <h2>💬 Техническая поддержка</h2>
+                </div>
+                <div class="chat-wrapper">
+                    <div class="chat-messages" id="chat-history"></div>
+                    <form class="chat-form" id="chat-form">
+                        <input type="text" id="chat-input" placeholder="Опишите ваш вопрос..." autocomplete="off">
+                        <button type="submit" class="btn-send">➤</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- АДМИН-ПАНЕЛЬ -->
+            <section id="admin" class="section admin-only hidden">
+                <div class="admin-header">
+                    <h2>⚙️ Панель управления</h2>
+                    <div class="admin-stats">
+                        <div class="admin-stat">
+                            <span class="stat-num" id="stat-pending">0</span>
+                            <span class="stat-text">В обработке</span>
+                        </div>
+                        <div class="admin-stat">
+                            <span class="stat-num" id="stat-completed">0</span>
+                            <span class="stat-text">Выполнено</span>
+                        </div>
+                        <div class="admin-stat">
+                            <span class="stat-num" id="stat-operators">0</span>
+                            <span class="stat-text">Сотрудников</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-grid">
+                    <div class="admin-card">
+                        <div class="card-header">🎯 Настройки охоты</div>
+                        <div class="card-body">
+                            <form id="hunt-settings-form">
+                                <div class="form-group">
+                                    <label>На кого охота</label>
+                                    <input type="text" id="admin-hunt-mob" required placeholder="Например: Дракон">
+                                </div>
+                                <div class="form-group">
+                                    <label>Название гильдии</label>
+                                    <input type="text" id="admin-hunt-guild" required
+                                        placeholder="Например: BCT Warriors">
+                                </div>
+                                <div class="form-group">
+                                    <label>Время сбора</label>
+                                    <input type="text" id="admin-hunt-time" required placeholder="Например: 20:00 МСК">
+                                </div>
+                                <button type="submit" class="btn-primary">Сохранить изменения</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <span>👥 Сотрудники</span>
+                            <button class="btn-secondary btn-add-operator"
+                                style="padding:8px 16px;font-size:0.85rem;width:auto">+ Добавить</button>
+                        </div>
+                        <div class="operators-list" id="operators-list"></div>
+                    </div>
+
+                    <div class="admin-card full-width">
+                        <div class="card-header">📦 Все заказы</div>
+                        <div class="order-filters">
+                            <button class="filter-btn active" data-filter="all">Все заказы</button>
+                            <button class="filter-btn" data-filter="pending">В обработке</button>
+                            <button class="filter-btn" data-filter="completed">Завершённые</button>
+                        </div>
+                        <div id="admin-orders" class="orders-list"></div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО КОРЗИНЫ -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>🛒 Ваша корзина</h3>
+                <button class="modal-close" data-close="cart">×</button>
+            </div>
+            <div class="modal-body">
+                <div id="cart-items" class="cart-items"></div>
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        <span>Итого к оплате:</span>
+                        <strong>$<span id="cart-total">0</span></strong>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" data-close="cart">Продолжить покупки</button>
+                <button class="btn-primary" id="checkout-btn">Оформить заказ →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ОФОРМЛЕНИЯ -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>💳 Оформление заказа</h3>
+                <button class="modal-close" data-close="checkout">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label>Способ оплаты</label>
+                        <select id="payment-method" required>
+                            <option value="card">💳 Банковская карта РФ/СНГ</option>
+                            <option value="crypto">₿ Криптовалюта (USDT TRC-20)</option>
+                            <option value="qiwi">💰 QIWI / ЮMoney</option>
+                        </select>
+                    </div>
+                    <div id="dynamic-form-fields"></div>
+                    <div class="checkout-summary">
+                        <p>К оплате: <strong>$<span id="checkout-total">0</span></strong></p>
+                    </div>
+                    <button type="submit" class="btn-primary">Оплатить заказ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ОТЗЫВА -->
+    <div id="review-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>⭐ Оставьте отзыв</h3>
+                <button class="modal-close" data-close="review">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="review-form">
+                    <p style="text-align:center;color:var(--text-secondary);margin-bottom:16px">Ваше мнение помогает нам
+                        становиться лучше!</p>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+                        <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                        <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                        <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                        <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+                    </div>
+                    <div class="form-group">
+                        <label>Ваш комментарий</label>
+                        <textarea id="review-text" required
+                            placeholder="Расскажите о вашем опыте покупки..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Отправить отзыв</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ДОБАВЛЕНИЯ ОПЕРАТОРА -->
+    <div id="operator-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>👤 Добавить сотрудника</h3>
+                <button class="modal-close" data-close="operator">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="operator-form">
+                    <div class="form-group">
+                        <label>ФИО сотрудника</label>
+                        <input type="text" id="op-name" required placeholder="Иван Иванов">
+                    </div>
+                    <div class="form-group">
+                        <label>Логин для входа</label>
+                        <input type="text" id="op-login" required placeholder="username">
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <input type="password" id="op-pass" required placeholder="••••••••">
+                    </div>
+                    <div class="form-group">
+                        <label>Роль</label>
+                        <select id="op-role" required>
+                            <option value="operator">Оператор</option>
+                            <option value="admin">Администратор</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Создать аккаунт</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ВЫХОДА -->
+    <div id="logout-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-box logout-box">
+            <div class="logout-icon">🚪</div>
+            <h3>Выход из аккаунта</h3>
+            <p>Вы уверены, что хотите выйти?</p>
+            <div class="logout-buttons">
+                <button class="btn-secondary" data-close="logout">Отмена</button>
+                <button class="btn-danger" id="confirm-logout">Выйти</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ЗАПРОСА ИНФОРМАЦИИ -->
+    <div id="request-info-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>❓ Запрос информации</h3>
+                <button class="modal-close" data-close="request-info">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="request-info-form">
+                    <div class="form-group">
+                        <label>Что нужно уточнить у клиента?</label>
+                        <textarea id="request-info-text" required placeholder="Здравствуйте! Подскажите, пожалуйста..."
+                            rows="5"></textarea>
+                    </div>
+                    <div class="request-info-preview">
+                        <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:8px">Предпросмотр
+                            сообщения:</p>
+                        <div id="request-info-preview"
+                            style="background:var(--bg-input);padding:12px;border-radius:8px;font-size:0.9rem;color:var(--text-secondary)">
+                            <!-- Сюда будет подставляться текст -->
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="margin-top:20px">
+                        <button type="button" class="btn-secondary" data-close="request-info">Отмена</button>
+                        <button type="submit" class="btn-primary">Отправить запрос</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ПОДТВЕРЖДЕНИЯ -->
+    <div id="confirm-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-box confirm-box">
+            <div class="modal-header">
+                <h3 id="confirm-title">Подтверждение</h3>
+                <button class="modal-close" data-close="confirm">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="confirm-icon" id="confirm-icon">❓</div>
+                <p id="confirm-message"
+                    style="text-align:center;color:var(--text-secondary);margin:20px 0;font-size:1.05rem;line-height:1.6">
+                    <!-- Текст вопроса -->
+                </p>
+                <div class="modal-footer" style="justify-content:center;gap:16px;margin-top:24px">
+                    <button class="btn-secondary" id="confirm-cancel" style="min-width:120px">Отмена</button>
+                    <button class="btn-primary" id="confirm-ok" style="min-width:120px">Подтвердить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- УВЕДОМЛЕНИЯ -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- Скрипты -->
+    <script src="js/db.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
